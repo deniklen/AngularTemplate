@@ -1,0 +1,21 @@
+<div class="layout-topbar">
+    <a class="layout-topbar-logo" routerLink="/administration">
+        <img src="assets/images/pcelica.png" alt="logo">
+        <span>Template</span>
+    </a>
+
+    <a class="p-link layout-menu-button layout-topbar-button" href="#" (click)="administration.toggleMenu($event)">
+        <i class="pi pi-bars"></i>
+    </a>
+
+    <a class="p-link layout-topbar-menu-button layout-topbar-button" href="#" (click)="administration.toggleTopMenu($event)">
+        <i class="pi pi-ellipsis-v"></i>
+    </a>
+
+    <div class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active':administration.topMenuActive}">
+        <a href="#" class="p-link layout-topbar-button">
+            <i class="pi pi-user"></i>
+            <span>Profile</span>
+        </a>
+    </div>
+</div>

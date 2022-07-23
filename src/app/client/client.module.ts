@@ -17,8 +17,18 @@ import { ClientRoutingModule } from './client-routing.module';
 import { ClientComponent } from './client.component';
 import { ClientInterceptor } from '../interaction/client.interceptor.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
-
+import { JwtHelperService, JwtModule, JwtModuleOptions, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { environment } from 'src/environments/environment';
+import { AuthService } from './auth/auth.service';
+export function tokenGetter() {
+    return localStorage.getItem("access_token");
+}
+const JWT_Module_Options: JwtModuleOptions = {
+    config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: [environment.jwtAllowedDomain]
+    }
+};
 @NgModule({
     imports: [
         CommonModule,
@@ -31,7 +41,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         CheckboxModule,
         ButtonModule,
         InputTextModule,
-        ProgressSpinnerModule
+        ProgressSpinnerModule,
+        JwtModule.forRoot(JWT_Module_Options)
     ],
     declarations: [
         ClientComponent,
@@ -42,6 +53,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         AppMenuitemComponent,
         DashboardComponent
     ],
-    providers: [{ provide: HTTP_INTERCEPTORS, useClass: ClientInterceptor, multi: true }],
+    providers: [{ provide: HTTP_INTERCEPTORS, useClass: ClientInterceptor, multi: true }]
 })
 export class ClientModule { }

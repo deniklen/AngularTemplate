@@ -32,7 +32,7 @@
                             <a class="font-medium no-underline ml-2 text-right cursor-pointer"
                                 style="color: var(--primary-color)" routerLink="forgot-password">Forgot password?</a>
                         </div>
-                        <button pButton pRipple label="Log In" class="w-full p-3 text-xl"></button>
+                        <button pButton pRipple label="Log In" (click)="onSubmit()" class="w-full p-3 text-xl"></button>
                         <div class="flex align-items-center justify-content-between mt-5 mb-5">
                             <span class="font-medium no-underline text-center w-full"
                                 style="color: grey;" >You don't have account yet?<a routerLink="register">

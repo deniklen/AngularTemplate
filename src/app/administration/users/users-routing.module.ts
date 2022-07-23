@@ -3,15 +3,21 @@ import { NgModule } from "@angular/core";
 import { UsersComponent } from "./users.component";
 import { UserEditComponent } from "./user-edit/user-edit.component";
 import { UserNewComponent } from "./user-new/user-new.component";
+import { BaseResolver } from "src/app/interaction/base.resolver";
+import { environment } from "src/environments/environment";
 
 const routes: Routes = [
     {
         path: '',
-        component: UsersComponent
+        component: UsersComponent,
+        resolve: { users: BaseResolver},
+        data: { url: environment.baseUrl + environment.usersRoute}
     },
     {
-        path: 'edit',
-        component: UserEditComponent
+        path: ':id',
+        component: UserEditComponent,
+        resolve: { user: BaseResolver},
+        data: { url: environment.baseUrl + environment.usersRoute}
     },
     {
         path: 'new',

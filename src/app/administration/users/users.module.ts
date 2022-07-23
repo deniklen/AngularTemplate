@@ -22,12 +22,14 @@ import { InputNumberModule } from "primeng/inputnumber";
 import { InputSwitchModule } from "primeng/inputswitch";
 import { UsersComponent } from "./users.component";
 import { ConfirmDialogModule } from "primeng/confirmdialog";
+import { UserEditComponent } from "./user-edit/user-edit.component";
 
 
 @NgModule({
     declarations: [
         UsersComponent,
-        UserListComponent
+        UserListComponent,
+        UserEditComponent
     ],
     imports: [
         CommonModule,

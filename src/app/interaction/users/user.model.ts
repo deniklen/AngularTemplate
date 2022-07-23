@@ -1,12 +1,20 @@
-export interface User {
-    id?: string;
-    firstName?: string;
-    lastName?: string;
-    emailAddress?: string;
-    roles?: Role[];
+export interface Role {
+    roleType: string;
+    id: string;
+    isNewEntity: boolean;
 }
 
-export interface Role {
-    id?: string;
-    name?: string;
+export interface User {
+    firstName: string;
+    lastName: string;
+    fullName: string;
+    emailAddress: string;
+    passwordHash: string;
+    active: boolean;
+    activated: boolean;
+    registeredOn: Date;
+    lastLoggedOn?: any;
+    roles: Role[];
+    id: string;
+    isNewEntity: boolean;
 }

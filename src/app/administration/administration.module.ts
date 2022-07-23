@@ -24,7 +24,13 @@ import { AdministrationTopbarComponent } from './layout/topbar/administration.to
 import { AdministrationMenuitemComponent } from './layout/menu/administration.menuitem.component';
 import { AdministrationDashboardComponent } from './dashboard/administration.dashboard.component';
 import { AdminInterceptor } from '../interaction/administration.interceptor.service';
+import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { environment } from 'src/environments/environment';
+import { AuthService } from './auth/auth.service';
 
+export function tokenGetter() {
+    return localStorage.getItem("access_token");
+}
 
 @NgModule({
     imports: [
@@ -46,7 +52,14 @@ import { AdminInterceptor } from '../interaction/administration.interceptor.serv
         ConfirmDialogModule,
         DialogModule,
         TableModule,
-        ToolbarModule
+        ToolbarModule, 
+        JwtModule.forRoot({ 
+            config: {
+                tokenGetter: tokenGetter,
+                allowedDomains: [environment.jwtAllowedDomain],
+                disallowedRoutes: []
+            }
+        })
     ],
     declarations: [
         AdministrationComponent,

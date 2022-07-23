@@ -12,6 +12,8 @@ import { RippleModule } from 'primeng/ripple';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ActivateUserComponent } from './activate/activate.component';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @NgModule({
   imports: [
@@ -31,7 +33,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
-  ]
+    ResetPasswordComponent,
+    ActivateUserComponent
+  ], providers: [JwtHelperService]
 })
 export class AuthModule { }

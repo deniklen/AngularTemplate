@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Subscription } from 'rxjs';
+import { LoginRequest } from 'src/app/interaction/login/login-request';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +29,7 @@ import { Subscription } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -43,7 +46,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    
+    this.authService.login(new LoginRequest(this.email.value, this.password.value));
   }
 
 
